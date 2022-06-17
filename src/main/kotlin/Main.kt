@@ -60,29 +60,18 @@ fun getJWT(): String {
 
 fun decodeJWT(encodedToken: String) {
     lateinit var publicKeyPem: PemObject
-
     val file = File("src/main/kotlin/open.pem").inputStream()
     val isr = InputStreamReader(file)
     val readerBufferedFile = BufferedReader(isr)
-
     val reader: PemReader = PemReader(readerBufferedFile)
     publicKeyPem = reader.readPemObject()
-
-
     val keyFactory = KeyFactory.getInstance("RSA")
     val publicKey = keyFactory.generatePublic(X509EncodedKeySpec(publicKeyPem.getContent()))
     //Only RSAPublicKeySpec and X509EncodedKeySpec supported for RSA public keys
     //generatePrivate(PKCS8EncodedKeySpec(publicKeyPem.getContent()))
-   var a =  Jwts.parserBuilder()
-
-
+    var a =  Jwts.parserBuilder()
        .setSigningKey(publicKey)
-       /*.signWith(
-           privateKey,
-           SignatureAlgorithm.PS256
-       )*/
-
-        .build()
-        .parse(encodedToken)
+       .build()
+       .parse(encodedToken)
     println(a)
 }
