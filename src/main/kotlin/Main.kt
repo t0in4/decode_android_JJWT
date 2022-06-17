@@ -19,7 +19,11 @@ fun main(args: Array<String>) {
     println("decoded token $b")
 
     val android_jwt = "eyJraWQiOiJhamU5MmRwYzR0NHR1N2JidTh1biIsInR5cCI6IkpXVCIsImFsZyI6IlBTMjU2In0.eyJpc3MiOiJhamVpanAxOW01OTlzOGFvczZ2ciIsImF1ZCI6Imh0dHBzOlwvXC9pYW0uYXBpLmNsb3VkLnlhbmRleC5uZXRcL2lhbVwvdjFcL3Rva2VucyIsImlhdCI6MTY1NTQ1MDQ5NCwiZXhwIjoxNjU1NDUwODU0fQ.Swv4MSF7rdfmg3alTmHSnDtt7v-xZjSMLepIvAih-WFtMTKp6uZZWSCF19D1nOuEmlvtBPWT-6UEzw4sH-OcxW5wYu-GHDpEA2jOnp8BIjKFV_ZnmOdy8zV2ue-waZltmvytNQHBUBwfkVGo09-UGpx4KCm6mLCAiMTEuS6Xbsp4wDUVBC8-lhvYw5e9e51JuFclytjQoxfGetI7CuZw7supF-1Dds_zwEPzUpUbawboQiEwkKfN1dmSq-CdmrWX38hXUhIgoaUBmzJucAGZ-fcMa8N1GgqqnCfDuBBQZdq6BpCkAZBVczZTV6OBiEIu67hjRKFp7XFAolDHitkIoA"
+
+    println("Android encoded token $android_jwt")
+
     val c = decodeJWT(android_jwt)
+
     println("Android decoded token $c")
 
 
