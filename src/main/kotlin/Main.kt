@@ -1,11 +1,14 @@
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
+import org.bouncycastle.jce.provider.BouncyCastleProvider
 import org.bouncycastle.util.io.pem.PemObject
 import org.bouncycastle.util.io.pem.PemReader
 import java.io.BufferedReader
 import java.io.File
 import java.io.InputStreamReader
 import java.security.KeyFactory
+import java.security.Provider
+import java.security.Security
 import java.security.spec.PKCS8EncodedKeySpec
 import java.security.spec.RSAPublicKeySpec
 import java.security.spec.X509EncodedKeySpec
@@ -13,6 +16,13 @@ import java.time.Instant
 import java.util.*
 
 fun main(args: Array<String>) {
+    val provider: Provider = BouncyCastleProvider()
+
+    Security.removeProvider("BC");
+
+    Security.addProvider(provider)
+
+    java.security.Signature.getInstance("RSASSA-PSS", "BC")
     val a = getJWT()
     println("encoded token $a")
     val b = decodeJWT(a)
